@@ -1,0 +1,13 @@
+.esphome/
+.venv*/
+__pycache__/
+*.py[cod]
+secrets.yaml
+.env
+.env.*
+.DS_Store
+Thumbs.db
+*.bin
+*.elf
+*.map
+*.log
