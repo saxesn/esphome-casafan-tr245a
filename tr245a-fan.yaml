@@ -1,0 +1,33 @@
+external_components:
+  - source:
+      type: local
+      path: components
+    components: [tr245a]
+
+spi:
+  id: a7105_spi
+  clk_pin: GPIO5
+  mosi_pin: GPIO16
+  miso_pin: GPIO36
+
+tr245a:
+  id: fan_radio
+  spi_id: a7105_spi
+  cs_pin: GPIO14
+  front_end: XL7105_D03
+  txen_pin: GPIO2
+  rxen_pin: GPIO15
+  address: 0x0000
+  transmit_repetitions: 3
+
+fan:
+  - platform: tr245a
+    tr245a_id: fan_radio
+    name: Ventilator
+    restore_mode: RESTORE_DEFAULT_OFF
+
+button:
+  - platform: tr245a
+    tr245a_id: fan_radio
+    name: Drehrichtung umschalten
+    command: FAN_R
